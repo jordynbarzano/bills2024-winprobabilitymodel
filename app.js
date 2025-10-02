@@ -381,10 +381,18 @@ async function main() {
 
   // Display the most exciting game explanation only for the most exciting week
   function updateExcitementStatement(week) {
+    const explanationDiv = document.getElementById('excitingExplanation');
     if (week == mostExcitingWeek) {
       excitementStatement.textContent = '★ Most Exciting Game';
+      if (explanationDiv) {
+        const homeName = teamNames[mostExcitingGame.home_team] || mostExcitingGame.home_team;
+        const awayName = teamNames[mostExcitingGame.away_team] || mostExcitingGame.away_team;
+        explanationDiv.innerHTML = `<strong>Most Exciting Game: Week ${mostExcitingWeek} (${homeName} vs ${awayName})</strong><br>Excitement: ${mostExcitement.toFixed(3)}<br><em>An exciting game is one with frequent and dramatic swings in win probability, meaning the outcome is uncertain and both teams have chances to win throughout. Close scores, lead changes, and unpredictable moments all contribute to excitement.</em>`;
+        explanationDiv.style.display = '';
+      }
     } else {
       excitementStatement.textContent = '';
+      if (explanationDiv) explanationDiv.style.display = 'none';
     }
   }
   updateExcitementStatement(allWeeks[0]);
