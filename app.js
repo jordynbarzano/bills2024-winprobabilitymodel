@@ -146,18 +146,14 @@ function renderBackgroundIcons() {
   }
   bg.innerHTML = '';
   // Only tiny white outlined stars and sparkles
-  const icons = [
-    { html: '★', class: 'star' },
-    { html: '✨', class: 'icon' }
-  ];
-  for (let i = 0; i < 32; i++) {
-    const icon = icons[Math.floor(Math.random() * icons.length)];
+  for (let i = 0; i < 80; i++) {
     const el = document.createElement('span');
-    el.className = icon.class;
-    el.innerHTML = icon.html;
+    el.className = 'star';
+    el.innerHTML = '★';
     el.style.top = `${Math.random() * 95}vh`;
     el.style.left = `${Math.random() * 98}vw`;
-    el.style.fontSize = `${0.9 + Math.random() * 0.7}em`;
+    el.style.fontSize = `${1.2 + Math.random() * 1.2}em`;
+    el.style.color = '#fff';
     bg.appendChild(el);
   }
 }
